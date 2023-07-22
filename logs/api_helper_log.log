@@ -1,0 +1,4 @@
+2023-07-22 02:42:44 - [32mINFO    [0m - Starting Program[0m
+2023-07-22 02:42:44 - [36mDEBUG   [0m - Starting new HTTPS connection (1): accounts.spotify.com:443[0m
+2023-07-22 02:42:45 - [36mDEBUG   [0m - https://accounts.spotify.com:443 "POST /api/token HTTP/1.1" 200 None[0m
+2023-07-22 02:42:45 - [32mINFO    [0m - Access token is set.[0m

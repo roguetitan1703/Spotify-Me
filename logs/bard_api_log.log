@@ -1,0 +1,5 @@
+2023-07-22 05:02:51 - [32mINFO    [0m - Starting Program[0m
+2023-07-22 05:02:51 - [36mDEBUG   [0m - Starting new HTTPS connection (1): bard.google.com:443[0m
+2023-07-22 05:02:52 - [36mDEBUG   [0m - https://bard.google.com:443 "GET / HTTP/1.1" 200 None[0m
+2023-07-22 05:03:39 - [36mDEBUG   [0m - https://bard.google.com:443 "POST /_/BardChatUi/data/assistant.lamda.BardFrontendService/StreamGenerate?bl=boq_assistant-bard-web-server_20230419.00_p1&_reqid=2290&rt=c HTTP/1.1" 200 None[0m
+2023-07-22 05:03:43 - [36mDEBUG   [0m - https://bard.google.com:443 "POST /_/BardChatUi/data/assistant.lamda.BardFrontendService/StreamGenerate?bl=boq_assistant-bard-web-server_20230419.00_p1&_reqid=102290&rt=c HTTP/1.1" 200 None[0m

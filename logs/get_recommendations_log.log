@@ -1,0 +1,4 @@
+2023-07-21 22:14:41 - [32mINFO    [0m - Starting Program[0m
+2023-07-21 22:14:41 - [36mDEBUG   [0m - Starting new HTTPS connection (1): api.spotify.com:443[0m
+2023-07-21 22:14:41 - [36mDEBUG   [0m - https://api.spotify.com:443 "GET /v1/recommendations/available-genre-seeds HTTP/1.1" 200 None[0m
+2023-07-21 22:14:41 - [32mINFO    [0m - Successfully retrieved available genre seeds[0m

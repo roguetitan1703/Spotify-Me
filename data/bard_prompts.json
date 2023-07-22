@@ -1,0 +1,4 @@
+{
+    "TEXT_BREAKDOWN_INTO_GENRES" : "Given the descriptive text provided below and available genre list: Use the description to filter the text and identify genres from the provided genres list that would match well with the user's preferences for generating personalized song recommendations. Return upto {num_genres} number of genres genres from the list matching the user's prefrence. The descriptive text : {text}. the descriptive text ends. The list of available genres to choose: {genres_seeds}. NOTE (important) : give only only the important and key highlight data that is the genres and give it into a form of an array , no brief explanation, no starting line and no ending line 'only the array'",
+    "GENRES_EXTRACTION" : "{raw_genres} NOTE (important) : give only only the important and key highlight data that is the genres and give it into a form of an array , no brief explanation, no starting line and no ending line 'only the array'" 
+}
