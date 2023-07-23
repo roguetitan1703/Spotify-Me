@@ -1,4 +1,2 @@
-
-if __name__ == '__main__':
-    bard = bard()
-    bard.extract_genres_from_text('Hii')
+_ap.extract_track_features_from_text(text)
+    print(features)

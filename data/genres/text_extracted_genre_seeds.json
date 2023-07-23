@@ -1,0 +1,28 @@
+{
+    "recommendation_available_genres": [
+        "dance",
+        "pop",
+        "happy",
+        "party"
+    ],
+    "search_available_genres": [
+        "dance",
+        "pop",
+        "happy",
+        "party",
+        "upbeat",
+        "uplifting",
+        "disco",
+        "electropop",
+        "funk",
+        "house",
+        "indie pop",
+        "k-pop",
+        "latin pop",
+        "new wave",
+        "pop rock",
+        "r&b",
+        "synthpop",
+        "tropical house"
+    ]
+}
