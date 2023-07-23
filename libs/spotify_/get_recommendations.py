@@ -6,6 +6,7 @@ import time
 import os, sys
 from urllib.parse import urlencode
 import webbrowser
+from pprint import pprint
 
 # Add the project's root directory to the Python path
 project_root = os.getcwd()
@@ -22,17 +23,25 @@ logger_recommendations = log_helper("get_recommendations_log.log", log_level='DE
 env_file = f'{project_root}/data/.env'
 load_dotenv(env_file)
 
-genre_file = f'{project_root}/data/available_genre_seeds.json'
+genre_file = f'{project_root}/data/genres/rec_avail_genre_seeds.json'
 available_genre_seeds = read_file(genre_file)
 
 # Urls for getting data from spotify api
 available_genre_seeds_url = os.getenv('GET_AVAILABLE_GENRE_SEEDS')
 recommendations_url = os.getenv('GET_RECOMMENDATIONS')
 current_user_profile_url = os.getenv('GET_CURRENT_USER_PROFILE')
+user_top_items_url = os.getenv('GET_USER_TOP_ITEMS')
 user_id = ''
 user_name = ''
 # Tokens
 access_token = os.getenv('ACCESS_TOKEN')
+
+
+# Updates environment variables 
+def update_env(values=[]):
+    if values:
+        for key, value in values.items():
+            set_key(env_file, key, value)
 
 
 # Gets available genre seeds
@@ -101,11 +110,48 @@ def get_current_users_id():
         logger_recommendations.log_message('error', json_resp['error']['message'])
     
 
-# Updates environment variables 
-def update_env(values=[]):
-    if values:
-        for key, value in values.items():
-            set_key(env_file, key, value)
+# To get the Top artists and tracks
+def get_top_items(type, time_range="medium_term", limit=20, offset=0):
+    response = requests.get(
+        user_top_items_url.format(type=type),
+        headers={
+            'Authorization': f"Bearer {access_token}"
+        },
+        params={
+            'time_range': time_range,
+            'limit': limit,
+            'offset': offset
+        }
+    )
+    
+    if response.status_code == 200:
+        logger_recommendations.log_message('info',f"Successfully retrieved user's top {type}")
+        json_resp = response.json()
+        
+        if type == 'artists':
+            artists,artist = [],{}
+            for item in json_resp['items']:
+                artist={
+                    'name' : item['name'],
+                    'genres' : item['genres'],
+                    'id' : item['id'],
+                }           
+                artists.append(artist)     
+        
+            return {
+                'artists' : artists,
+                'error' : None
+            }
+
+    elif response.status_code == 401:
+        # invalid access token
+        json_resp = response.json()
+
+        logger_recommendations.log_message('error', json_resp['error']['message'])
 
 
-get_available_genre_seeds()
+
+if __name__ == "__main__":
+    import api_helper as api
+    api.refresh_or_get_new_tokens()
+    pprint(get_top_items('artists')['artists'],indent=4)

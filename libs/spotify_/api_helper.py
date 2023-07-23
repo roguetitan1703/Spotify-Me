@@ -120,6 +120,7 @@ def refresh_access_token():
 
 # Function to set the access and refresh tokens
 def set_tokens(token, access=True, refresh=True):
+    load_dotenv()
     if token:
         global access_token, refresh_token
         if access:
