@@ -1,3 +1,32 @@
 {
-    "python.analysis.extraPaths": ["${workspaceFolder}/../libs/", "${workspaceFolder}/../data/","${workspaceFolder}/"]
+    "python.analysis.extraPaths": ["${workspaceFolder}/../libs/", "${workspaceFolder}/../data/","${workspaceFolder}/"],
+    "[python]": {
+        "editor.defaultFormatter": null
+    },
+    "python.formatting.blackArgs": ["--line-length", "120"],
+    "python.formatting.provider": "black",
+    "workbench.colorCustomizations": {
+        "activityBar.activeBackground": "#189a46",
+        "activityBar.background": "#189a46",
+        "activityBar.foreground": "#e7e7e7",
+        "activityBar.inactiveForeground": "#e7e7e799",
+        "activityBarBadge.background": "#6422dd",
+        "activityBarBadge.foreground": "#e7e7e7",
+        "commandCenter.border": "#e7e7e799",
+        "sash.hoverBorder": "#189a46",
+        "statusBar.background": "#116e32",
+        "statusBar.foreground": "#e7e7e7",
+        "statusBarItem.hoverBackground": "#189a46",
+        "statusBarItem.remoteBackground": "#116e32",
+        "statusBarItem.remoteForeground": "#e7e7e7",
+        "titleBar.activeBackground": "#116e32",
+        "titleBar.activeForeground": "#e7e7e7",
+        "titleBar.inactiveBackground": "#116e3299",
+        "titleBar.inactiveForeground": "#e7e7e799"
+    },
+    "peacock.color": "#116e32",
+    "cSpell.words": [
+        "bardapi",
+        "dotenv"
+    ],
 }

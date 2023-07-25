@@ -16,8 +16,8 @@ from helpers_.json_helper import read_file, dump_file
 from helpers_.log_helper import log_helper
 
 
-# Making a class bard for our functionality 
-class bard:
+# Making a class TextAnalysis for our functionality 
+class TextAnalysis:
     def __init__(self, bard_api_key=None,language='en'):
        
         # Setting path
@@ -32,16 +32,16 @@ class bard:
         load_dotenv(env_file)
 
         # Loading data files variables
-        self.text_extracted_genres_file = f'{self.genres_path}/text_extracted_genre_seeds.json'
-        self.search_available_genre_file = f'{self.genres_path}/search_available_genre_seeds.json'
+        self.text_extracted_genres_file = f'{self.genres_path}/text_extracted_seed_genres.json'
+        self.search_available_genre_file = f'{self.genres_path}/search_available_seed_genres.json'
 
-        self.rec_avail_genre_list = read_file(f'{self.genres_path}/rec_avail_genre_seeds.json')
+        self.rec_avail_genre_list = read_file(f'{self.genres_path}/rec_avail_seed_genres.json')
         self.bard_prompts = read_file(f'{self.data_path}/bard_prompts.json')
-        self.track_featutes_list = read_file(f'{self.track_features_path}/track_features.json')
-        self.track_featutes_meanings = read_file(f'{self.track_features_path}/track_features_meanings.json')
+        self.track_features_list = read_file(f'{self.track_features_path}/track_features.json')
+        self.track_features_meanings = read_file(f'{self.track_features_path}/track_features_meanings.json')
         
         # Setting logger
-        self.logger_bard = log_helper("bard_api_log.log", log_level='DEBUG')
+        self.logger_bard = log_helper("BardAPI_log.log", log_level='DEBUG')
 
         # Setting bard
         self.bard_api_key = bard_api_key or os.getenv('BARD_API_KEY')
@@ -103,7 +103,7 @@ class bard:
                     except (SyntaxError, ValueError, IndexError):
                         # If still unsuccessful, handle the error or return a default value
                         return {
-                            "parsed_value": [],
+                            "parsed_value": genres,
                             "error": "Error parsing as an array."
                         }
 
@@ -130,18 +130,18 @@ class bard:
                     except (SyntaxError, ValueError, IndexError):
                         # If still unsuccessful, handle the error or return a default value
                         return {
-                            "parsed_value": {},
+                            "parsed_value": semi_parsed,
                             "error": "Error parsing as a dictionary."
                         }
 
         return {
-            "parsed_value": None,
+            "parsed_value": semi_parsed,
             "error": "No data provided or invalid input type."
         }
 
 
-    # A function to extract the genres recognised by spotify recommendations from the descriptive text
-    def extract_rec_avail_genres_from_text(self, text, qty=10):
+    # A function to extract the genres recognized by spotify recommendations from the descriptive text
+    def extract_rec_seed_genres_from_text(self, text, qty=10):
         # Push the descriptive text about the playlist into the Bard API
         prompt = self.bard_prompts['TEXT_BREAKDOWN_INTO_GENRES'].format(num_genres=qty, text=text, genres_seeds=self.rec_avail_genre_list)
         self.logger_bard.log_message("info", f"Prompt sent to Bard API [RAG]")
@@ -157,7 +157,7 @@ class bard:
         parsed_data = self.parser(raw_genres_text[0],is_array=True, cross_check=True)
         
         if parsed_data['error']:
-            self.logger_bard.log_message("error", f"Error in parsing the genres from the response [RAG]. Error: {parsed_data['error']}")
+            self.logger_bard.log_message("error", f"Error in parsing the genres from the response [RAG]. Error: {parsed_data['error']}, Semi_parsed: {parsed_data['parsed_value']}")
             return []
         
         self.logger_bard.log_message("info", f"Successfully extracted the genres extracted from the response [RAG]")
@@ -165,7 +165,7 @@ class bard:
     
 
     # To extract search available genres from the descriptive text
-    def extract_search_avail_genres_from_text(self, text, qty=10):
+    def extract_search_seed_genres_from_text(self, text, qty=10):
         # Push the descriptive text about the playlist into the Bard API
         prompt = self.bard_prompts['TEXT_BREAKDOWN_INTO_GENRES_FREE_FORM'].format(num_genres=qty, text=text)
         self.logger_bard.log_message("info", f"Prompt sent to Bard API [SAG]")
@@ -181,33 +181,32 @@ class bard:
         parsed_data = self.parser(raw_genres_text[0], is_array=True)
 
         if parsed_data['error']:
-            self.logger_bard.log_message("error", f"Error in parsing the genres from the response [SAG]. Error: {parsed_data['error']}")
+            self.logger_bard.log_message("error", f"Error in parsing the genres from the response [SAG]. Error: {parsed_data['error']}, Semi_parsed: {parsed_data['parsed_value']}")
             return []
         
         self.logger_bard.log_message("info", f"Successfully extracted the genres extracted from the response [SAG]")
         return parsed_data['parsed_value']
 
     
-    def extract_genres_from_text(self, text, qty=10):
+    def extract_genres(self, text, qty=10):
         # Extract the genres from the descriptive text using both methods
-        self.recommendation_avail_genres = self.extract_rec_avail_genres_from_text(text, qty)
-        self.search_avail_genres = self.extract_search_avail_genres_from_text(text, qty)
+        self.recommendation_seed_genres = self.extract_rec_seed_genres_from_text(text, qty)
+        self.search_seed_genres = self.extract_search_seed_genres_from_text(text, qty)
         
         # Combine the extracted genres into a dictionary
-        self.text_extracted_genre_seeds = {
-            'recommendation_available_genres': self.recommendation_avail_genres,
-            'search_available_genres': self.search_avail_genres
+        self.text_extracted_seed_genres = {
+            'recommendation_available_genres': self.recommendation_seed_genres,
+            'search_available_genres': self.search_seed_genres
         }
 
-        # Dump the extracted_genres into a file
-        self.logger_bard.log_message("info", f"Successfully dumped the extracted_genres into the file")
-        dump_file(self.text_extracted_genres_file, self.text_extracted_genre_seeds)
+        
+        return self.text_extracted_seed_genres
 
 
     
     def extract_track_features_from_text(self, text):
         # Extract the track features from the descriptive text
-        prompt = self.bard_prompts['TEXT_BREAKDOWN_INTO_TRACK_FEATURES'].format(text=text,track_features=self.track_featutes_list,features_meaning=self.track_featutes_meanings)
+        prompt = self.bard_prompts['TEXT_BREAKDOWN_INTO_TRACK_FEATURES'].format(text=text,track_features=self.track_features_list,features_meaning=self.track_features_meanings)
         self.logger_bard.log_message("info", f"Prompt sent to Bard API [AF]")
         response = self.bard.get_answer(prompt)
 
@@ -230,7 +229,7 @@ class bard:
         
 
 if __name__ == '__main__':
-    bard_ap = bard()
-    text = input('Enter text: ')
+    bard_ap = TextAnalysis()
+    text = "I want a playlist which has cool aesthetic types songs which are groovy nut loud but reverb or slowed types still with good music which you can jam on by yourself"
     # features = bard_ap.extract_track_features_from_text(text)
-    bard_ap.extract_genres_from_text(text)
+    bard_ap.extract_genres(text)

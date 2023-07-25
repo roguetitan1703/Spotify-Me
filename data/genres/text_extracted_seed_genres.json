@@ -1,0 +1,21 @@
+{
+    "recommendation_available_genres": [
+        "chill",
+        "groove",
+        "indie",
+        "jazz",
+        "pop",
+        "soul",
+        "trip-hop"
+    ],
+    "search_available_genres": [
+        "chill",
+        "downtempo",
+        "dream pop",
+        "electronica",
+        "ambient",
+        "trip-hop",
+        "vaporwave",
+        "slowed + reverb"
+    ]
+}
