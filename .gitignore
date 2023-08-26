@@ -1,3 +1,4 @@
-data\.env
+data/BardAPI/.env
+data/SpotifyAPI/.env
 logs
 Progress_

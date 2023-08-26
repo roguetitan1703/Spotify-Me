@@ -33,7 +33,7 @@ class TextAnalysis:
         self.user_data_path = f'{project_root}/data/user_data/'
 
         # Loading environment variable  
-        self.env_file = f'{project_root}/data/.env'
+        self.env_file = f'{self.bardapi_path}/.env'
         load_dotenv(self.env_file)
 
         # Loading data files variables
