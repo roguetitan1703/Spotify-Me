@@ -1,0 +1,254 @@
+{
+    "german hip hop": {
+        "sad lo-fi": 3,
+        "german cloud rap": 3
+    },
+    "sad lo-fi": {
+        "german hip hop": 3,
+        "german cloud rap": 3
+    },
+    "rap": {
+        "r&b": 3
+    },
+    "indie garage rock": {
+        "neo-psychedelic": 3
+    },
+    "hard rock": {
+        "metal": 3
+    },
+    "indian edm": {
+        "indian indie": 3,
+        "indian singer-songwriter": 3,
+        "desi pop": 3,
+        "hindi indie": 3
+    },
+    "alt z": {
+        "pop": 6,
+        "pov: indie": 6
+    },
+    "indian indie": {
+        "indian edm": 3,
+        "indian singer-songwriter": 6,
+        "desi pop": 6,
+        "hindi indie": 6
+    },
+    "etherpop": {
+        "pop": 3,
+        "electropop": 3,
+        "indie poptimism": 3
+    },
+    "rock": {
+        "permanent wave": 3,
+        "modern rock": 3,
+        "garage rock": 3,
+        "sheffield indie": 3
+    },
+    "talent show": {
+        "boy band": 3,
+        "pop": 3,
+        "post-teen pop": 3
+    },
+    "hyperpop": {
+        "sped up": 6,
+        "dark r&b": 6
+    },
+    "k-pop girl group": {},
+    "swedish synthpop": {
+        "neo-synthpop": 3
+    },
+    "anime score": {},
+    "permanent wave": {
+        "rock": 3,
+        "modern rock": 3,
+        "garage rock": 3,
+        "sheffield indie": 3
+    },
+    "indian singer-songwriter": {
+        "indian edm": 3,
+        "indian indie": 6,
+        "desi pop": 6,
+        "hindi indie": 6
+    },
+    "drift phonk": {
+        "hardwave": 3
+    },
+    "oc rap": {
+        "scream rap": 3,
+        "dark trap": 3
+    },
+    "modern bollywood": {
+        "filmi": 6
+    },
+    "desi pop": {
+        "indian edm": 3,
+        "indian indie": 6,
+        "indian singer-songwriter": 6,
+        "hindi indie": 6
+    },
+    "alaska indie": {},
+    "sped up": {
+        "hyperpop": 6,
+        "dark r&b": 6
+    },
+    "metal": {
+        "hard rock": 3
+    },
+    "modern rock": {
+        "rock": 3,
+        "permanent wave": 3,
+        "pop": 3,
+        "garage rock": 3,
+        "sheffield indie": 3,
+        "modern alternative rock": 3,
+        "pov: indie": 3
+    },
+    "boy band": {
+        "talent show": 3,
+        "pop": 6,
+        "post-teen pop": 3
+    },
+    "scream rap": {
+        "oc rap": 3,
+        "dark trap": 3
+    },
+    "hardwave": {
+        "drift phonk": 3
+    },
+    "el paso indie": {
+        "shoegaze": 3,
+        "ambient pop": 3,
+        "dream pop": 3
+    },
+    "piano rock": {
+        "pop": 3
+    },
+    "metropopolis": {
+        "indietronica": 3,
+        "neo-synthpop": 3
+    },
+    "pop": {
+        "alt z": 6,
+        "etherpop": 3,
+        "talent show": 3,
+        "modern rock": 3,
+        "boy band": 6,
+        "piano rock": 3,
+        "electropop": 6,
+        "modern alternative rock": 3,
+        "indie poptimism": 3,
+        "dance pop": 3,
+        "pov: indie": 9,
+        "post-teen pop": 3,
+        "art pop": 9
+    },
+    "uk contemporary r&b": {
+        "electro house": 3
+    },
+    "garage rock": {
+        "rock": 3,
+        "permanent wave": 3,
+        "modern rock": 3,
+        "sheffield indie": 3
+    },
+    "hindi indie": {
+        "indian edm": 3,
+        "indian indie": 6,
+        "indian singer-songwriter": 6,
+        "desi pop": 6
+    },
+    "filmi": {
+        "modern bollywood": 6
+    },
+    "shoegaze": {
+        "el paso indie": 3,
+        "ambient pop": 3,
+        "dream pop": 3
+    },
+    "electropop": {
+        "etherpop": 3,
+        "pop": 6,
+        "indie poptimism": 3,
+        "art pop": 3
+    },
+    "indietronica": {
+        "metropopolis": 3,
+        "neo-synthpop": 3
+    },
+    "dark r&b": {
+        "hyperpop": 6,
+        "sped up": 6
+    },
+    "neo-synthpop": {
+        "swedish synthpop": 3,
+        "metropopolis": 3,
+        "indietronica": 3
+    },
+    "ambient pop": {
+        "el paso indie": 3,
+        "shoegaze": 3,
+        "dream pop": 3
+    },
+    "sheffield indie": {
+        "rock": 3,
+        "permanent wave": 3,
+        "modern rock": 3,
+        "garage rock": 3
+    },
+    "dark trap": {
+        "oc rap": 3,
+        "scream rap": 3,
+        "brisbane indie": 3
+    },
+    "brisbane indie": {
+        "dark trap": 3
+    },
+    "modern alternative rock": {
+        "modern rock": 3,
+        "pop": 3,
+        "pov: indie": 3
+    },
+    "indie poptimism": {
+        "etherpop": 3,
+        "pop": 3,
+        "electropop": 3
+    },
+    "dream pop": {
+        "el paso indie": 3,
+        "shoegaze": 3,
+        "ambient pop": 3
+    },
+    "weirdcore": {},
+    "dance pop": {
+        "pop": 3,
+        "art pop": 3
+    },
+    "pov: indie": {
+        "alt z": 6,
+        "modern rock": 3,
+        "pop": 9,
+        "modern alternative rock": 3
+    },
+    "electro house": {
+        "uk contemporary r&b": 3
+    },
+    "neo-psychedelic": {
+        "indie garage rock": 3
+    },
+    "post-teen pop": {
+        "talent show": 3,
+        "boy band": 3,
+        "pop": 3
+    },
+    "art pop": {
+        "pop": 9,
+        "electropop": 3,
+        "dance pop": 3
+    },
+    "r&b": {
+        "rap": 3
+    },
+    "german cloud rap": {
+        "german hip hop": 3,
+        "sad lo-fi": 3
+    }
+}

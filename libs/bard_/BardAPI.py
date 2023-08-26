@@ -24,19 +24,24 @@ class TextAnalysis:
         self.project_root = os.getcwd()
         self.data_path = f'{self.project_root}/data'
         self.libs_path = f'{self.project_root}/libs'
-        self.genres_path = f'{self.data_path}/genres'
-        self.track_features_path = f'{self.data_path}/track_features'
-        
+                
+        self.bardapi_path = f'{project_root}/data/BardAPI/'
+        self.genres_path = f'{project_root}/data/genres/'
+        self.model_path = f'{project_root}/data/model/'
+        self.spotifyapi_path = f'{project_root}/data/SpotifyAPI/'
+        self.track_features_path = f'{project_root}/data/track_features/'
+        self.user_data_path = f'{project_root}/data/user_data/'
+
         # Loading environment variable  
-        self.env_file = env_file = f'{self.data_path}/.env'
-        load_dotenv(env_file)
+        self.env_file = f'{project_root}/data/.env'
+        load_dotenv(self.env_file)
 
         # Loading data files variables
-        self.text_extracted_genres_file = f'{self.genres_path}/text_extracted_seed_genres.json'
+        self.text_extracted_genres_file = f'{self.user_data_path}/text_extracted_seed_genres.json'
         self.search_available_genre_file = f'{self.genres_path}/search_available_seed_genres.json'
 
         self.rec_avail_genre_list = read_file(f'{self.genres_path}/rec_avail_seed_genres.json')
-        self.bard_prompts = read_file(f'{self.data_path}/bard_prompts.json')
+        self.bard_prompts = read_file(f'{self.bardapi_path}/bard_prompts.json')
         self.track_features_list = read_file(f'{self.track_features_path}/track_features.json')
         self.track_features_meanings = read_file(f'{self.track_features_path}/track_features_meanings.json')
         
@@ -188,22 +193,6 @@ class TextAnalysis:
         return parsed_data['parsed_value']
 
     
-    def extract_genres(self, text, qty=10):
-        # Extract the genres from the descriptive text using both methods
-        self.recommendation_seed_genres = self.extract_rec_seed_genres_from_text(text, qty)
-        self.search_seed_genres = self.extract_search_seed_genres_from_text(text, qty)
-        
-        # Combine the extracted genres into a dictionary
-        self.text_extracted_seed_genres = {
-            'recommendation_available_genres': self.recommendation_seed_genres,
-            'search_available_genres': self.search_seed_genres
-        }
-
-        
-        return self.text_extracted_seed_genres
-
-
-    
     def extract_track_features_from_text(self, text):
         # Extract the track features from the descriptive text
         prompt = self.bard_prompts['TEXT_BREAKDOWN_INTO_TRACK_FEATURES'].format(text=text,track_features=self.track_features_list,features_meaning=self.track_features_meanings)
@@ -226,7 +215,20 @@ class TextAnalysis:
         self.logger_bard.log_message("info", f"Successfully extracted the track features extracted from the response [AF]")
         return parsed_data['parsed_value']
 
+    
+    def extract_genres(self, text, qty=10):
+        # Extract the genres from the descriptive text using both methods
+        self.recommendation_seed_genres = self.extract_rec_seed_genres_from_text(text, qty)
+        self.search_seed_genres = self.extract_search_seed_genres_from_text(text, qty)
         
+        # Combine the extracted genres into a dictionary
+        self.text_extracted_seed_genres = {
+            'recommendation_available_genres': self.recommendation_seed_genres,
+            'search_available_genres': self.search_seed_genres
+        }
+
+        
+        return self.text_extracted_seed_genres
 
 if __name__ == '__main__':
     bard_ap = TextAnalysis()

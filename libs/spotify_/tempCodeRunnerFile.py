@@ -1,6 +1,2 @@
-
-
-    # if not artists['error']:
-    #     pprint(artists,indent=4)
-    # else:
-    #     print(artists['error'])
+    Monitor = StatusMonitor()
+    Monitor.status_monitor(1)

@@ -49,7 +49,7 @@ class EveryNoiseScrapper:
                 uri_parameter = self.get_uri_parameter(src)
                 if uri_parameter:
                     playlist_id = uri_parameter.split(":")[-1]
-                    self.logger.log_message("info", f"Successfully extracted playlist ID for genre '{genre}'")
+                    self.logger.log_message("info", f"Successfully extracted playlist ID for genre '{genre}', id:'{playlist_id}'")
                     return playlist_id
                 else:
                     self.logger.log_message("error", f"URI parameter not found for genre '{genre}'")

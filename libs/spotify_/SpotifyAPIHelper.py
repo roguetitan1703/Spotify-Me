@@ -15,12 +15,19 @@ project_root = os.getcwd()
 sys.path.append(f'{project_root}/data')
 sys.path.append(f'{project_root}/libs')
 
+bardapi_path = f'{project_root}/data/BardAPI/'
+genres_path = f'{project_root}/data/genres/'
+model_path = f'{project_root}/data/model/'
+spotifyapi_path = f'{project_root}/data/SpotifyAPI/'
+track_features_path = f'{project_root}/data/track_features/'
+user_data_path = f'{project_root}/data/user_data/'
+
 from helpers_.json_helper import read_file
 from helpers_.log_helper import log_helper
 
 class SpotifyAPIHelper:
     # Load environment variables and initialize logger
-    env_file = f'{project_root}/data/.env'
+    env_file = f'{spotifyapi_path}/.env'
     load_dotenv(env_file)
 
     # Urls used in connecting to Spotify API
@@ -31,7 +38,7 @@ class SpotifyAPIHelper:
     auth_code = os.getenv('AUTHORIZATION_CODE')
 
     # Access scopes for modifying user's data or reading it 
-    access_scopes = read_file(f'{project_root}/data/modify_scopes.json')
+    access_scopes = read_file(f'{spotifyapi_path}/modify_scopes.json')
     scope = ' '.join(access_scopes['MODIFY_PLAYBACK_LISTENING_PLUS'] + 
                      access_scopes["MODIFY_LIBRARY_PLAYLIST_PLUS"] + 
                      access_scopes["MODIFY_FOLLOW_PLUS"])
@@ -199,7 +206,9 @@ class SpotifyAPIHelper:
                 cls.logger_api.log_message('info', 'Refresh token is set.')
                 set_key(cls.env_file, 'REFRESH_TOKEN', cls.refresh_token)
 
-
+    @classmethod
+    def current_access_token(self):
+        return os.getenv('ACCESS_TOKEN')
 
 
 

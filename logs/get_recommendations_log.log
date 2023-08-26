@@ -1,8 +1,0 @@
-2023-07-24 03:15:21 - [32mINFO    [0m - Starting Program[0m
-2023-07-24 03:15:21 - [32mINFO    [0m - Starting Program[0m
-2023-07-24 03:15:21 - [36mDEBUG   [0m - Starting new HTTPS connection (1): accounts.spotify.com:443[0m
-2023-07-24 03:15:21 - [36mDEBUG   [0m - https://accounts.spotify.com:443 "POST /api/token HTTP/1.1" 200 None[0m
-2023-07-24 03:15:21 - [32mINFO    [0m - Access token is set.[0m
-2023-07-24 03:15:21 - [36mDEBUG   [0m - Starting new HTTPS connection (1): api.spotify.com:443[0m
-2023-07-24 03:15:22 - [36mDEBUG   [0m - https://api.spotify.com:443 "GET /v1/me/top/artists?time_range=medium_term&limit=20&offset=0 HTTP/1.1" 200 None[0m
-2023-07-24 03:15:22 - [32mINFO    [0m - Successfully retrieved user's top artists[0m
