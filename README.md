@@ -1,4 +1,4 @@
-# SPOTIFY ME
+### SPOTIFY ME
 SPOTIFY ME is an ambitious project that seamlessly connects to users' Spotify accounts, offering a wide array of exciting and personalized features. Its primary functionality lies in the creation of customized playlists based on user-provided descriptive text, taking advantage of genre seeds and track features such as energy, danceability, and loudness. Leveraging the integration with the Bard API, the system empowers users to describe their desired playlists, specify particular artists, or even curate the perfect playlist based on their current listening habits. The algorithm at the heart of SPOTIFY ME efficiently sorts through vast musical possibilities and skillfully selects the most fitting songs, delivering a tailored and enjoyable music experience.
 
 ## Key Features
